@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title_page %}
+<h1 align="center" style="color:#ffffff"> {{ news_item.title }}</h1>
+{% endblock %}
+
+{% block sidebar %}
+{% include 'inc/_sidebar.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="col-md">
+    <div class="card-group mb-3 shadow p-1 mb-5 bg-dark ">
+        <div class="card bg-dark text-white">
+            {% if news_item.photo %}
+            <img src="{{ news_item.photo.url }}" class="card-img-top" alt="">
+            {% else %}
+            <img src="https://3dnews.ru/assets/external/illustrations/2022/02/21/1060683/cp_2077_title.jpg"
+                 class="card-img-top">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ news_item.title }}</h5>
+                <p class="card-text">{{ news_item.content|safe|linebreaksbr}}</p>
+            </div>
+            <div class="card-footer">
+                <small> <b>Категория:</b> <a href="{% url 'category' news_item.category.pk %}" class="link-success">{{
+                    news_item.category.title }} </a>
+                </small><br>
+                <small class="text-muted">{{ news_item.updated_at|date:"Y-m-d H:i" }}</small>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

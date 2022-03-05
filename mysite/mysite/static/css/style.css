@@ -1,0 +1,16 @@
+body {
+    background-image: url("https://i.playground.ru/p/i0T5aueZidTOdJHNMPhOSA.png");
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+h1 {
+	text-shadow: 2px 2px 2px #000;
+	font-color: #fff;
+	color: #ffffff
+}
+
+form-label{
+    color:#ffffff;
+}
+
