@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title_page %}
+<h1 align="center" style="color:#ffffff"> АВТОРИЗАЦИЯ</h1>
+{% endblock %}
+
+{% block sidebar %}
+{% include 'inc/_sidebar.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="col-md">
+    {% if messages %}
+
+    {% for message in messages %}
+    {% if message.tags == 'error' %}
+    <div class="alert alert-danger" role="alert">
+        {{ message }}
+    </div>
+    {% else %}
+    <div class="alert alert-{{ message.tags }}" role="alert">
+        Иная ошибка
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    <div class="card" aria-hidden="true">
+        <div class="card-body bg-dark">
+            <form align="center" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                {% comment %}
+                {% for field in form %}
+
+                <div style="color:#ffffff" class="form-group  border border-4">
+                    <h4> {{ field.label_tag }} </h4>
+                    {{ field }}
+                    <div class="invalid-feedback">
+                        {{ field.errors }}
+                    </div>
+
+                </div>
+                {% endfor %}
+                {% endcomment %}
+                <button type="submit" class="btn btn-primary btn-block bg-dark border border-4">Авторизоваться</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}
